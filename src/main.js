@@ -11,7 +11,7 @@ const store = new Vuex.Store({
     tasks: []
   },
   mutations: {
-    updateTasks (state, tasks) {
+    updateTasks(state, tasks) {
       state.tasks = tasks
     }
   }
