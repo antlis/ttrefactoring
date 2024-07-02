@@ -18,11 +18,11 @@ export default {
   <div
     class="task"
     :class="taskClass"
-    @click="$emit('task-toggle', task)">
+    @click="$emit('task-toggle')">
     <div class="task__header">
       <div
         class="task__delete-button"
-        @click.stop="$emit('task-delete', task)">
+        @click.stop="$emit('task-delete')">
         x
       </div>
     </div>
