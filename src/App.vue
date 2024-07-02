@@ -5,7 +5,9 @@
     </div>
     <TaskProgress :progress="progress" />
     <TaskForm @create-new-task="createNewTask($event)" />
-    <TaskGrid @task-delete="taskDelete($event)" @task-toggle="taskToggle($event)" />
+    <TaskGrid
+      @task-delete="deleteTask($event)"
+      @task-toggle="toggleTask($event)" />
   </div>
 </template>
 
@@ -13,30 +15,32 @@
 import TaskProgress from "@/components/TaskProgress.vue"
 import TaskForm from "@/components/TaskForm.vue"
 import TaskGrid from "@/components/TaskGrid"
+import { mapMutations } from 'vuex'
 
 export default {
-  components: { TaskProgress, TaskForm, TaskGrid },
-
-  created: function () {
-    const json = localStorage.getItem('tasks');
-    this.tasks = JSON.parse(json) || [];
+  components: {
+    TaskProgress,
+    TaskForm,
+    TaskGrid
   },
-
   computed: {
     tasks: {
-      get: function () {
-        return this.$store.state.tasks
+      get() {
+        return this.$store.state.tasks.tasks
       },
-      set: function (value) {
-        this.$store.commit('updateTasks', value)
-      }
+      set(tasks) {
+        this.updateTasks(tasks)
+      },
     },
     tasksDoneCount() { return this.tasks.filter(arr => !arr.pending).length },
     progress() {
       return this.tasks.length === 0 ? 0 : Math.round(100 / this.tasks.length * this.tasksDoneCount);
     },
   },
-
+  mounted: function () {
+    const json = localStorage.getItem('tasks')
+    this.tasks = JSON.parse(json) || []
+  },
   watch: {
     tasks: {
       deep: true,
@@ -45,22 +49,13 @@ export default {
       }
     }
   },
-
   methods: {
-    createNewTask(taskTitle) {
-      this.tasks.push({
-        title: taskTitle,
-        pending: true,
-      })
-    },
-
-    taskDelete(i) {
-      this.tasks.splice(i, 1);
-    },
-
-    taskToggle(i) {
-      this.tasks[i].pending = !this.tasks[i].pending;
-    },
+    ...mapMutations('tasks', {
+      updateTasks: 'updateTasks',
+      createNewTask: 'createNewTask',
+      deleteTask: 'deleteTask',
+      toggleTask: 'toggleTask',
+    }),
   }
 }
 </script>

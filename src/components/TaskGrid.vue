@@ -19,7 +19,7 @@ export default {
   computed: {
     tasks: {
       get: function () {
-        return this.$store.state.tasks
+        return this.$store.state.tasks.tasks
       },
       set: function (value) {
         this.$store.commit('updateTasks', value)
