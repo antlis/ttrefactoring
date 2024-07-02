@@ -1,10 +1,17 @@
 <template>
-  <div id="app">
+  <div id="app" class="page">
     <div class="main-navbar">
-      <h1 class="main-navbar-title">Tasks</h1>
+      <h1 class="main-navbar__title">Tasks</h1>
     </div>
-    <TaskProgress :progress="progress" />
-    <TaskForm @create-new-task="createNewTask($event)" />
+
+    <div class="page__progress-container">
+      <TaskProgress :progress="progress" />
+    </div>
+
+    <div class="page__form-container">
+      <TaskForm @create-new-task="createNewTask($event)" />
+    </div>
+
     <TaskGrid
       @task-delete="deleteTask($event)"
       @task-toggle="toggleTask($event)" />
@@ -60,40 +67,32 @@ export default {
 }
 </script>
 
-<style>
-* {
-  box-sizing: border-box;
-  user-select: none;
-}
+<style lang="scss">
+.page {
+  &__form-container {
+    margin: 20px 30px 0 30px;
 
-h1,
-h2,
-h3 {
-  margin: 0;
-}
+    @media (min-width: $desktop-breakpoint) {
+      margin: 40px 30px 0 30px;
+    }
+  }
 
-body {
-  font-family: 'Lato', sans-serif;
-  background: linear-gradient(to right, rgb(22, 34, 42), rgb(58, 96, 115));
-  color: #FFF;
-  margin: 0;
+  &__progress-container {
+    margin: 15px 50px 0 50px;
+  }
 }
 
 .main-navbar {
   text-align: center;
-}
 
-
-.main-navbar-title {
-  margin-top: 10px;
-  font-weight: 300;
-  font-size: 2rem;
-}
-
-@media (min-width: 576px) {
-  .main-navbar-title {
-    margin-top: 20px;
-    font-size: 3rem;
+  &__title {
+    margin-top: 10px;
+    font-weight: 300;
+    font-size: 2rem;
+    @media (min-width: $desktop-breakpoint) {
+      margin-top: 20px;
+      font-size: 3rem;
+    }
   }
 }
 </style>

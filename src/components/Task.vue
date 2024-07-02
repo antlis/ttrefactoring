@@ -1,12 +1,19 @@
 <template>
-  <div class="task" :class="taskClass" @click="$emit('task-toggle', task)">
-    <div class="task-header">
-      <div class="task-delete-button" :class="taskClass" @click.stop="$emit('task-delete', task)">
+  <div
+    class="task"
+    :class="taskClass"
+    @click="$emit('task-toggle', task)">
+    <div class="task__header">
+      <div
+        class="task__delete-button"
+        @click.stop="$emit('task-delete', task)">
         x
       </div>
     </div>
-    <div class="task-body">
-      <span class="task-text" :class="taskClass">{{ task.title }}</span>
+    <div class="task__body">
+      <span class="task__text">
+        {{ task.title }}
+      </span>
     </div>
   </div>
 </template>
@@ -19,18 +26,18 @@ export default {
       required: true,
     }
   },
-
   computed: {
     taskClass() {
-      return this.task.pending ? 'pending' : 'done';
+      return this.task.pending ? 'task--is-pending' : 'task--is-done'
     },
   }
-
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .task {
+  $self: &;
+  
   display: flex;
   flex-direction: column;
   width: 350px;
@@ -40,74 +47,70 @@ export default {
   user-select: none;
   border-radius: 8px;
   margin-top: 10px;
-}
 
-@media (min-width: 576px) {
-  .task {
+  @media (min-width: $desktop-breakpoint) {
     width: 350px;
     margin: 10px;
   }
-}
 
-.task-header {
-  display: flex;
-  justify-content: flex-end;
-}
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+  }
 
-.task-delete-button {
-  font-size: 13px;
-  text-align: center;
-  border-radius: 10px;
-  width: 20px;
-  height: 20px;
-  top: 10px;
-  right: 10px;
-}
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 2;
+  }
 
-.task-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 2;
-}
+  &__delete-button {
+    font-size: 13px;
+    text-align: center;
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    right: 10px;
+  }
 
-.task-text {
-  max-width: 308px;
-  font-size: 32px;
-  font-weight: 100;
-  line-height: 33px;
-  overflow-wrap: break-word;
-}
+  &__text {
+    max-width: 308px;
+    font-size: 32px;
+    font-weight: 100;
+    line-height: 33px;
+    overflow-wrap: break-word;
+  }
 
-.task.pending {
-  background-color: #d1382e;
-  border-left: 12px solid #b8271c;
-}
+  &--is-pending {
+    background-color: #d1382e;
+    border-left: 12px solid #b8271c;
+    &:hover {
+      background-color: #fa4538;
+      border-left: 12px solid #d83d32;
+    }
 
-.task.pending:hover {
-  background-color: #fa4538;
-  border-left: 12px solid #d83d32;
-}
+    #{ $self }__delete-button {
+      background-color: #b73229;
+    }
+  }
 
-.task.done {
-  background-color: #4caf50;
-  border-left: 12px solid #0a8f08;
-}
+  &--is-done {
+    background-color: #4caf50;
+    border-left: 12px solid #0a8f08;
+    &:hover {
+      background-color: #60d463;
+      border-left: 12px solid #0fc40c;
+    }
 
-.task.done:hover {
-  background-color: #60d463;
-  border-left: 12px solid #0fc40c;
-}
+    #{ $self }__delete-button {
+      background-color: #0a8f08;
+    }
 
-.task-text.done {
-  text-decoration: line-through;
-}
-
-.task-delete-button.done {
-  background-color: #0a8f08;
-}
-
-.task-delete-button.pending {
-  background-color: #b73229;
+    #{ $self }__text {
+      text-decoration: line-through;
+    }
+  }
 }
 </style>

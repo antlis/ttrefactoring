@@ -1,8 +1,17 @@
 <template>
-  <div class="task-form-container">
-    <form class="task-form" @submit="newTask($event)">
-      <input class="task-form-input" type="text" placeholder="New task?" maxlength="43" v-model="title">
-      <button class="task-form-button" @click.prevent="newTask($event)">+</button>
+  <div class="task-form">
+    <form class="task-form__form" @submit="newTask($event)">
+      <input
+        class="task-form__input"
+        type="text"
+        placeholder="New task?"
+        maxlength="43"
+        v-model="title">
+      <button
+        class="task-form__button"
+        @click.prevent="newTask($event)">
+        +
+      </button>
     </form>
   </div>
 </template>
@@ -27,51 +36,43 @@ export default {
 }
 </script>
 
-<style scoped>
-.task-form-container {
-  margin: 20px 30px 0 30px;
-  display: flex;
-  justify-content: center;
-}
-
-@media (min-width: 576px) {
-  .task-form-container {
-    margin: 40px 30px 0 30px;
-  }
-}
-
+<style scoped lang="scss">
 .task-form {
   display: flex;
-  width: 100%;
-  max-width: 600px;
-  border: solid 1px white;
-  border-radius: 8px;
-}
+  justify-content: center;
 
-.task-form-input {
-  width: 100%;
-  padding: 7px 10px;
-  background-color: #FFF2;
-  color: #FFF;
-  font-size: 32px;
-  border: none;
-  border-right: 1px solid white;
-  outline: none;
-}
+  &__form {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    border: solid 1px white;
+    border-radius: 8px;
+  }
 
-.task-form-button {
-  width: 50px;
-  margin: none;
-  border: none;
-  background-color: #1d80d1;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  color: white;
-  font-size: 32px;
-  outline: none;
-}
+  &__input {
+    width: 100%;
+    padding: 7px 10px;
+    background-color: #FFF2;
+    color: #FFF;
+    font-size: 32px;
+    border: none;
+    border-right: 1px solid white;
+    outline: none;
+  }
 
-.task-form-button:hover {
-  background-color: #3da8ff;
+  &__button {
+    width: 50px;
+    margin: none;
+    border: none;
+    background-color: #1d80d1;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: white;
+    font-size: 32px;
+    outline: none;
+    &:hover {
+      background-color: #3da8ff;
+    }
+  }
 }
 </style>

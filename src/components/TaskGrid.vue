@@ -1,9 +1,24 @@
 <template>
-  <draggable class="task-grid" id="task-grid" v-model="tasks" group="people" animation=250 fallbackTolerance=3
-    @start="drag = true" @end="drag = false">
-    <task v-for="(task, i) in tasks" :key="task.title" :task="task" @task-delete="$emit('task-delete', i)"
+  <draggable
+    class="task-grid"
+    id="task-grid"
+    v-model="tasks"
+    group="people"
+    animation=250
+    fallbackTolerance=3
+    @start="drag = true"
+    @end="drag = false">
+    <task
+      v-for="(task, i) in tasks"
+      :key="task.title"
+      :task="task"
+      @task-delete="$emit('task-delete', i)"
       @task-toggle="$emit('task-toggle', i)" />
-    <span class="no-tasks-message" v-if="tasks.length === 0">No task for today :)</span>
+    <span
+      v-if="tasks.length === 0"
+      class="no-tasks-message">
+      No task for today :)
+    </span>
   </draggable>
 </template>
 
@@ -29,15 +44,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .task-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
 
-@media (min-width: 576px) {
-  .task-grid {
+  @media (min-width: $desktop-breakpoint) {
     margin-top: 20px;
     margin: 40px 0 0 0;
   }
