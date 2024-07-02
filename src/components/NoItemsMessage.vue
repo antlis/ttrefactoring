@@ -18,7 +18,7 @@ export default {
 <style scoped lang="scss">
 .no-tasks-message {
   font-size: 26px;
-  color: #FFF2;
+  color: $color-opaque-white;
   margin-top: 100px;
 
   @media (min-width: $desktop-breakpoint) {

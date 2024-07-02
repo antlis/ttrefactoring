@@ -46,18 +46,18 @@ export default {
     display: flex;
     width: 100%;
     max-width: 600px;
-    border: solid 1px white;
+    border: solid 1px $color-white;
     border-radius: 8px;
   }
 
   &__input {
     width: 100%;
     padding: 7px 10px;
-    background-color: #FFF2;
-    color: #FFF;
+    background-color: $color-opaque-white;
+    color: $color-white;
     font-size: 32px;
     border: none;
-    border-right: 1px solid white;
+    border-right: 1px solid $color-white;
     outline: none;
   }
 
@@ -65,14 +65,14 @@ export default {
     width: 50px;
     margin: none;
     border: none;
-    background-color: #1d80d1;
+    background-color: $color-sky;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
-    color: white;
+    color: $color-white;
     font-size: 32px;
     outline: none;
     &:hover {
-      background-color: #3da8ff;
+      background-color: $color-sky-bright;
     }
   }
 }

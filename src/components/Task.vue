@@ -49,7 +49,6 @@ export default {
   margin-top: 10px;
 
   @media (min-width: $desktop-breakpoint) {
-    width: 350px;
     margin: 10px;
   }
 
@@ -84,28 +83,28 @@ export default {
   }
 
   &--is-pending {
-    background-color: #d1382e;
-    border-left: 12px solid #b8271c;
+    background-color: $color-danger-dark;
+    border-left: 12px solid $color-danger-brighter;
     &:hover {
-      background-color: #fa4538;
-      border-left: 12px solid #d83d32;
+      background-color: $color-danger-red;
+      border-left: 12px solid $color-danger-pale;
     }
 
     #{ $self }__delete-button {
-      background-color: #b73229;
+      background-color: $color-danger-darkest;
     }
   }
 
   &--is-done {
-    background-color: #4caf50;
-    border-left: 12px solid #0a8f08;
+    background-color: $color-success;
+    border-left: 12px solid $color-success-dark;
     &:hover {
-      background-color: #60d463;
-      border-left: 12px solid #0fc40c;
+      background-color: $color-success-brightest;
+      border-left: 12px solid $color-success-brith;
     }
 
     #{ $self }__delete-button {
-      background-color: #0a8f08;
+      background-color: $color-success-dark;
     }
 
     #{ $self }__text {

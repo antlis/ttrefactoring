@@ -48,7 +48,7 @@ export default {
 
   &__bar {
     border-radius: 8px;
-    background-color: #4caf50;
+    background-color: $color-success;
     height: 20px;
     @media (min-width: $desktop-breakpoint) {
       height: 30px;

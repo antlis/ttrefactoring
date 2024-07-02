@@ -21,9 +21,13 @@ export default {
         this.updateTasks(tasks)
       },
     },
-    tasksDoneCount() { return this.tasks.filter(arr => !arr.pending).length },
+    tasksDoneCount() {
+      return this.tasks.filter(task => !task.pending).length
+    },
     progress() {
-      return this.tasks.length === 0 ? 0 : Math.round(100 / this.tasks.length * this.tasksDoneCount);
+      return this.tasks.length === 0 ?
+        0 :
+        Math.round(100 / this.tasks.length * this.tasksDoneCount);
     },
   },
   mounted: function () {
