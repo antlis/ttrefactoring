@@ -1,9 +1,12 @@
+import { uuid } from 'vue-uuid';
+
 const mutations = {
   updateTasks(state, tasks) {
     state.tasks = tasks
   },
   createNewTask(state, task) {
     state.tasks.push({
+      id: uuid.v4(),
       title: task,
       pending: true,
     })

@@ -1,11 +1,11 @@
 <script>
 import Task from "@/components/Task.vue"
 import NoItemsMessage from "@/components/NoItemsMessage"
-import draggable from 'vuedraggable'
+import Draggable from 'vuedraggable'
 
 export default {
   components: {
-    draggable,
+    Draggable,
     Task,
     NoItemsMessage,
   },
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-  <draggable
+  <Draggable
     class="task-grid"
     id="task-grid"
     v-model="tasks"
@@ -32,12 +32,12 @@ export default {
     fallbackTolerance=3
     @start="drag = true"
     @end="drag = false">
-    <task
-      v-for="(task, i) in tasks"
-      :key="task.title"
+    <Task
+      v-for="(task, index) in tasks"
+      :key="task.id"
       :task="task"
-      @task-delete="$emit('task-delete', i)"
-      @task-toggle="$emit('task-toggle', i)" />
+      @task-delete="$emit('task-delete', index)"
+      @task-toggle="$emit('task-toggle', index)" />
     <div v-if="tasks.length === 0">
       <NoItemsMessage text="No task for today :)" />
     </div>
