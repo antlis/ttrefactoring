@@ -17,7 +17,6 @@ export default {
     task: {
       type: Object,
       required: true,
-      default: '',
     }
   },
 
