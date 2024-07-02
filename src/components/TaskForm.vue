@@ -6,9 +6,8 @@ export default {
     }
   },
   methods: {
-    newTask(e) {
-      e.preventDefault();
-      if (this.title != '') {
+    createNewTask() {
+      if (this.title) {
         this.$emit('create-new-task', this.title);
         this.title = "";
       }
@@ -20,7 +19,9 @@ export default {
 
 <template>
   <div class="task-form">
-    <form class="task-form__form" @submit="newTask($event)">
+    <form
+      class="task-form__form"
+      @submit.prevent="createNewTask">
       <input
         class="task-form__input"
         type="text"
@@ -29,7 +30,7 @@ export default {
         v-model="title">
       <button
         class="task-form__button"
-        @click.prevent="newTask($event)">
+        @click.prevent="createNewTask">
         +
       </button>
     </form>
