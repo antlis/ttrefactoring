@@ -14,22 +14,22 @@
       :task="task"
       @task-delete="$emit('task-delete', i)"
       @task-toggle="$emit('task-toggle', i)" />
-    <span
-      v-if="tasks.length === 0"
-      class="no-tasks-message">
-      No task for today :)
-    </span>
+    <div v-if="tasks.length === 0">
+      <NoItemsMessage text="No task for today :)" />
+    </div>
   </draggable>
 </template>
 
 <script>
 import Task from "@/components/Task.vue"
+import NoItemsMessage from "@/components/NoItemsMessage"
 import draggable from 'vuedraggable'
 
 export default {
   components: {
     draggable,
     Task,
+    NoItemsMessage,
   },
   computed: {
     tasks: {
@@ -49,22 +49,5 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
-  @media (min-width: $desktop-breakpoint) {
-    margin-top: 20px;
-    margin: 40px 0 0 0;
-  }
-}
-
-.no-tasks-message {
-  font-size: 26px;
-  color: #FFF2;
-  margin-top: 100px;
-}
-
-@media (min-width: 576px) {
-  .no-tasks-message {
-    font-size: 32px;
-  }
 }
 </style>

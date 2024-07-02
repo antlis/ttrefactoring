@@ -1,8 +1,6 @@
 <template>
   <div id="app" class="page">
-    <div class="main-navbar">
-      <h1 class="main-navbar__title">Tasks</h1>
-    </div>
+    <Navbar title="Tasks" />
 
     <div class="page__progress-container">
       <TaskProgress :progress="progress" />
@@ -12,9 +10,11 @@
       <TaskForm @create-new-task="createNewTask($event)" />
     </div>
 
-    <TaskGrid
-      @task-delete="deleteTask($event)"
-      @task-toggle="toggleTask($event)" />
+    <div class="page__grid-container">
+      <TaskGrid
+        @task-delete="deleteTask($event)"
+        @task-toggle="toggleTask($event)" />
+    </div>
   </div>
 </template>
 
@@ -22,13 +22,15 @@
 import TaskProgress from "@/components/TaskProgress.vue"
 import TaskForm from "@/components/TaskForm.vue"
 import TaskGrid from "@/components/TaskGrid"
+import Navbar from "@/components/Navbar"
 import { mapMutations } from 'vuex'
 
 export default {
   components: {
     TaskProgress,
     TaskForm,
-    TaskGrid
+    TaskGrid,
+    Navbar,
   },
   computed: {
     tasks: {
@@ -80,18 +82,11 @@ export default {
   &__progress-container {
     margin: 15px 50px 0 50px;
   }
-}
 
-.main-navbar {
-  text-align: center;
-
-  &__title {
-    margin-top: 10px;
-    font-weight: 300;
-    font-size: 2rem;
+  &__grid-container {
     @media (min-width: $desktop-breakpoint) {
       margin-top: 20px;
-      font-size: 3rem;
+      margin: 40px 0 0 0;
     }
   }
 }
