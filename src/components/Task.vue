@@ -1,3 +1,19 @@
+<script>
+export default {
+  props: {
+    task: {
+      type: Object,
+      required: true,
+    }
+  },
+  computed: {
+    taskClass() {
+      return this.task.pending ? 'task--is-pending' : 'task--is-done'
+    },
+  }
+}
+</script>
+
 <template>
   <div
     class="task"
@@ -17,22 +33,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  props: {
-    task: {
-      type: Object,
-      required: true,
-    }
-  },
-  computed: {
-    taskClass() {
-      return this.task.pending ? 'task--is-pending' : 'task--is-done'
-    },
-  }
-}
-</script>
 
 <style scoped lang="scss">
 .task {

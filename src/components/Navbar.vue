@@ -1,9 +1,3 @@
-<template>
-  <div class="navbar">
-    <h1 class="navbar__title">{{ title }}</h1>
-  </div>
-</template>
-
 <script>
 export default {
   props: {
@@ -14,6 +8,12 @@ export default {
   },
 }
 </script>
+
+<template>
+  <div class="navbar">
+    <h1 class="navbar__title">{{ title }}</h1>
+  </div>
+</template>
 
 <style lang="scss">
 .navbar {

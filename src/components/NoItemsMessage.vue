@@ -1,9 +1,3 @@
-<template>
-  <span class="no-tasks-message">
-    {{ text }}
-  </span>
-</template>
-
 <script>
 export default {
   props: {
@@ -14,6 +8,12 @@ export default {
   },
 }
 </script>
+
+<template>
+  <span class="no-tasks-message">
+    {{ text }}
+  </span>
+</template>
 
 <style scoped lang="scss">
 .no-tasks-message {

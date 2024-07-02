@@ -1,23 +1,3 @@
-<template>
-  <div id="app" class="page">
-    <Navbar title="Tasks" />
-
-    <div class="page__progress-container">
-      <TaskProgress :progress="progress" />
-    </div>
-
-    <div class="page__form-container">
-      <TaskForm @create-new-task="createNewTask($event)" />
-    </div>
-
-    <div class="page__grid-container">
-      <TaskGrid
-        @task-delete="deleteTask($event)"
-        @task-toggle="toggleTask($event)" />
-    </div>
-  </div>
-</template>
-
 <script>
 import TaskProgress from "@/components/TaskProgress.vue"
 import TaskForm from "@/components/TaskForm.vue"
@@ -68,6 +48,26 @@ export default {
   }
 }
 </script>
+
+<template>
+  <div id="app" class="page">
+    <Navbar title="Tasks" />
+
+    <div class="page__progress-container">
+      <TaskProgress :progress="progress" />
+    </div>
+
+    <div class="page__form-container">
+      <TaskForm @create-new-task="createNewTask($event)" />
+    </div>
+
+    <div class="page__grid-container">
+      <TaskGrid
+        @task-delete="deleteTask($event)"
+        @task-toggle="toggleTask($event)" />
+    </div>
+  </div>
+</template>
 
 <style lang="scss">
 .page {

@@ -1,3 +1,15 @@
+<script>
+export default {
+  props: {
+    progress: {
+      type: Number,
+      default: 0,
+      required: true,
+    }
+  }
+}
+</script>
+
 <template>
   <div class="task-progress">
     <div class="task-progress__inner">
@@ -11,18 +23,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  props: {
-    progress: {
-      type: Number,
-      default: 0,
-      required: true,
-    }
-  }
-}
-</script>
 
 <style scoped lang="scss">
 .task-progress {

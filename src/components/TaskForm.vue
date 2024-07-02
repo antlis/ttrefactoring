@@ -1,3 +1,23 @@
+<script>
+export default {
+  data() {
+    return {
+      title: "",
+    }
+  },
+  methods: {
+    newTask(e) {
+      e.preventDefault();
+      if (this.title != '') {
+        this.$emit('create-new-task', this.title);
+        this.title = "";
+      }
+    }
+  }
+}
+</script>
+
+
 <template>
   <div class="task-form">
     <form class="task-form__form" @submit="newTask($event)">
@@ -15,26 +35,6 @@
     </form>
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      title: "",
-    }
-  },
-
-  methods: {
-    newTask(e) {
-      e.preventDefault();
-      if (this.title != '') {
-        this.$emit('create-new-task', this.title);
-        this.title = "";
-      }
-    }
-  }
-}
-</script>
 
 <style scoped lang="scss">
 .task-form {
