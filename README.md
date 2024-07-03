@@ -41,3 +41,11 @@ npm lint
 13. Сделал переменные для цветов в стилях [коммит](https://github.com/antlis/ttrefactoring/commit/4057badd80d080f128ab6d13314904192fd7b245)
 
 14. Обновил README.md, убрал ненужный `required: true`, у комонента `TaskProgress` [коммит](https://github.com/antlis/ttrefactoring/commit/27714ca506006ad4d28472352274636ee99b3884)
+
+```
+Если при билде будет ошибка Error: error:0308010C:digital envelope routines::unsupported
+
+export NODE_OPTIONS=--openssl-legacy-provider
+```
+
+[Задание](https://docs.google.com/document/d/1N5BQ4Df2vvhKl2k4i8S8TROGYh9Laf1-/edit?usp=sharing&ouid=106251946952584336779&rtpof=true&sd=true)
