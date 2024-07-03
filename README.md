@@ -2,7 +2,7 @@
 
 ```bash
 # install dependencies
-npm install
+npm install --legacy-peer-deps
 
 # execute the project
 npm run serve
