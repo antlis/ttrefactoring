@@ -40,4 +40,4 @@ npm lint
 
 13. Сделал переменные для цветов в стилях [коммит](https://github.com/antlis/ttrefactoring/commit/4057badd80d080f128ab6d13314904192fd7b245)
 
-14. Обновил README.md, убрал ненужный `required: true`, у комонента `TaskProgress` [коммит](https://github.com/antlis/ttrefactoring/commit/4d56f770271cbd72da1206cb019936fa8ffb7046)
+14. Обновил README.md, убрал ненужный `required: true`, у комонента `TaskProgress` [коммит](https://github.com/antlis/ttrefactoring/commit/27714ca506006ad4d28472352274636ee99b3884)
